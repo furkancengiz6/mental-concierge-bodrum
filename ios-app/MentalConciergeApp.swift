@@ -31,8 +31,8 @@ struct MentalConciergeApp: App {
                     }
                 }
             }
-            .modelContainer(for: [UserProfile.self, Reservation.self])
         }
+        .modelContainer(for: [UserProfile.self, Reservation.self])
     }
 }
 
