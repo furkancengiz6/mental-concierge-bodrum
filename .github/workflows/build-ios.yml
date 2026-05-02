@@ -34,14 +34,24 @@ jobs:
           echo "=== Binary Architecture ==="
           file build/Build/Products/Release-iphonesimulator/MentalConcierge.app/MentalConcierge
           echo ""
-          echo "=== Binary Details ==="
+          echo "=== Binary File Type ==="
           lipo -info build/Build/Products/Release-iphonesimulator/MentalConcierge.app/MentalConcierge || true
+          echo ""
+          echo "=== Checking for stub executor ==="
+          ls -la build/Build/Products/Release-iphonesimulator/MentalConcierge.app/*.dylib 2>/dev/null || echo "No dylib files found (good!)"
           echo ""
           echo "=== Info.plist ==="
           plutil -p build/Build/Products/Release-iphonesimulator/MentalConcierge.app/Info.plist
 
-      - name: Upload App Bundle
+      - name: Create Appetize-ready zip
+        run: |
+          cd build/Build/Products/Release-iphonesimulator
+          zip -r ../../../../MentalConcierge.zip MentalConcierge.app
+          echo "=== Zip contents verification ==="
+          zipinfo ../../../../MentalConcierge.zip
+
+      - name: Upload for Appetize
         uses: actions/upload-artifact@v4
         with:
-          name: MentalConcierge.zip
-          path: build/Build/Products/Release-iphonesimulator/MentalConcierge.app
+          name: appetize-upload
+          path: MentalConcierge.zip
