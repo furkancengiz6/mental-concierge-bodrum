@@ -7,19 +7,34 @@ struct AIOrbView: View {
     var body: some View {
         ZStack {
             // New iOS 18+ MeshGradient for the 'Siri-like' Aura
-            MeshGradient(width: 3, height: 3, points: [
-                [0, 0], [0.5, 0], [1, 0],
-                [0, 0.5], [0.5, 0.5], [1, 0.5],
-                [0, 1], [0.5, 1], [1, 1]
-            ], colors: [
-                isBreathing ? .appAccent : .blue, .purple, .appAccent,
-                .blue, isBreathing ? .indigo : .appAccent, .purple,
-                .purple, .appAccent, .blue
-            ])
-            .frame(width: 220, height: 220)
-            .blur(radius: 60)
-            .opacity(0.4)
-            .scaleEffect(isBreathing ? 1.2 : 0.8)
+            if #available(iOS 18.0, *) {
+                MeshGradient(width: 3, height: 3, points: [
+                    [0, 0], [0.5, 0], [1, 0],
+                    [0, 0.5], [0.5, 0.5], [1, 0.5],
+                    [0, 1], [0.5, 1], [1, 1]
+                ], colors: [
+                    isBreathing ? .appAccent : .blue, .purple, .appAccent,
+                    .blue, isBreathing ? .indigo : .appAccent, .purple,
+                    .purple, .appAccent, .blue
+                ])
+                .frame(width: 220, height: 220)
+                .blur(radius: 60)
+                .opacity(0.4)
+                .scaleEffect(isBreathing ? 1.2 : 0.8)
+            } else {
+                // Fallback for iOS < 18
+                Circle()
+                    .fill(RadialGradient(
+                        colors: [isBreathing ? .appAccent : .blue, .purple, .clear],
+                        center: .center,
+                        startRadius: 0,
+                        endRadius: 200
+                    ))
+                    .frame(width: 220, height: 220)
+                    .blur(radius: 60)
+                    .opacity(0.4)
+                    .scaleEffect(isBreathing ? 1.2 : 0.8)
+            }
             
             // Core Sphere with Liquid Glass Effect
             ZStack {
@@ -33,27 +48,13 @@ struct AIOrbView: View {
                         LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .topLeading, endPoint: .bottomTrailing),
                         lineWidth: 1
                     )
-                
-                // Pulsing Center
-                Circle()
-                    .fill(Color.appAccent)
-                    .frame(width: 12, height: 12)
-                    .blur(radius: 8)
-                    .scaleEffect(isBreathing ? 2.5 : 1.0)
             }
             .frame(width: 140, height: 140)
         }
         .onAppear {
-            withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: true)) {
+            withAnimation(.easeInOut(duration: 4.0).repeatForever(autoreverses: true)) {
                 isBreathing = true
             }
         }
-    }
-}
-
-#Preview {
-    ZStack {
-        Color.black.ignoresSafeArea()
-        AIOrbView()
     }
 }
