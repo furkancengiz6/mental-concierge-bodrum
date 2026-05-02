@@ -246,23 +246,24 @@ struct MeshGradientView: View {
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        ZStack {
-            colors[1] // Primary base
-            
-            // Simulating a moving mesh with multiple blurred gradients
+        GeometryReader { geo in
             ZStack {
+                colors[1]
+                
                 Circle()
                     .fill(colors[0].opacity(0.3))
-                    .frame(width: 600)
-                    .blur(radius: 120)
-                    .offset(x: CGFloat(sin(t * 0.5)) * 150, y: CGFloat(cos(t * 0.3)) * 100)
+                    .frame(width: geo.size.width * 1.2)
+                    .blur(radius: 80)
+                    .offset(x: CGFloat(sin(t * 0.5)) * 60, y: CGFloat(cos(t * 0.3)) * 40)
                 
                 Circle()
                     .fill(colors[2].opacity(0.2))
-                    .frame(width: 500)
-                    .blur(radius: 100)
-                    .offset(x: CGFloat(cos(t * 0.4)) * 100, y: CGFloat(sin(t * 0.6)) * 150)
+                    .frame(width: geo.size.width)
+                    .blur(radius: 60)
+                    .offset(x: CGFloat(cos(t * 0.4)) * 40, y: CGFloat(sin(t * 0.6)) * 60)
             }
+            .frame(width: geo.size.width, height: geo.size.height)
+            .clipped()
         }
         .onReceive(timer) { _ in
             withAnimation(.linear(duration: 0.1)) {
