@@ -28,27 +28,27 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 40) {
+                VStack(alignment: .leading, spacing: 28) {
                     
                     // Header
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 8) {
                         Text("BODRUM EDITION")
-                            .font(.system(size: 10, weight: .bold))
-                            .tracking(8)
+                            .font(.system(size: 9, weight: .bold))
+                            .tracking(6)
                             .foregroundColor(.white.opacity(0.4))
                         
                         Text(greetingText)
-                            .font(.system(size: 44, weight: .light, design: .serif))
+                            .font(.system(size: 32, weight: .light, design: .serif))
                             .foregroundColor(.white)
                     }
-                    .padding(.top, 80)
-                    .padding(.horizontal, 32)
+                    .padding(.top, 60)
+                    .padding(.horizontal, 24)
                     
                     // THE MASTER SELECTION (Predictive Logic)
-                    VStack(alignment: .leading, spacing: 25) {
+                    VStack(alignment: .leading, spacing: 16) {
                         HStack {
                             Text("THE MASTER SELECTION")
-                                .font(.system(size: 10, weight: .bold))
+                                .font(.system(size: 9, weight: .bold))
                                 .tracking(4)
                                 .foregroundColor(.appAccent)
                             Spacer()
@@ -56,7 +56,7 @@ struct HomeView: View {
                                 .foregroundColor(.appAccent)
                                 .symbolEffect(.pulse)
                         }
-                        .padding(.horizontal, 10)
+                        .padding(.horizontal, 8)
                         
                         MasterSelectionCard(
                             title: masterTitle,
@@ -64,20 +64,20 @@ struct HomeView: View {
                             accent: masterAccent
                         )
                     }
-                    .padding(.horizontal, 22)
+                    .padding(.horizontal, 20)
                     
                     // Secondary Grid
-                    HStack(spacing: 20) {
+                    HStack(spacing: 14) {
                         SmallActionCard(title: "Aegean Calm", icon: "wind", color: .blue)
                         SmallActionCard(title: "Itinerary", icon: "calendar", color: .appAccent)
                     }
-                    .padding(.horizontal, 22)
+                    .padding(.horizontal, 20)
 
                     // Predictive Concierge Insight
                     ConciergeInsightView(text: predictiveInsight)
-                        .padding(.horizontal, 22)
+                        .padding(.horizontal, 20)
                     
-                    Spacer(minLength: 120)
+                    Spacer(minLength: 100)
                 }
             }
             
@@ -154,26 +154,26 @@ struct MasterSelectionCard: View {
     
     var body: some View {
         Button(action: { HapticManager.shared.majorAction() }) {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(subtitle)
-                    .font(.system(size: 9, weight: .bold))
+                    .font(.system(size: 8, weight: .bold))
                     .tracking(4)
                     .foregroundColor(accent)
                 
                 Text(title)
-                    .font(.system(size: 32, weight: .light, design: .serif))
+                    .font(.system(size: 24, weight: .light, design: .serif))
                     .foregroundColor(.white)
                 
                 HStack {
                     Text("Enter Experience")
                     Image(systemName: "arrow.right")
                 }
-                .font(.system(size: 10, weight: .bold))
+                .font(.system(size: 9, weight: .bold))
                 .tracking(2)
-                .padding(.top, 10)
+                .padding(.top, 8)
                 .foregroundColor(.white.opacity(0.5))
             }
-            .padding(40)
+            .padding(24)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(
                 RoundedRectangle(cornerRadius: 40)
@@ -194,17 +194,17 @@ struct SmallActionCard: View {
     
     var body: some View {
         Button(action: { HapticManager.shared.premiumTouch() }) {
-            VStack(spacing: 15) {
+            VStack(spacing: 12) {
                 Image(systemName: icon)
-                    .font(.system(size: 24))
+                    .font(.system(size: 20))
                     .foregroundColor(color)
                 Text(title.uppercased())
-                    .font(.system(size: 9, weight: .bold))
+                    .font(.system(size: 8, weight: .bold))
                     .tracking(3)
                     .foregroundColor(.white.opacity(0.6))
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 30)
+            .padding(.vertical, 22)
             .background(
                 RoundedRectangle(cornerRadius: 30)
                     .fill(Color.white.opacity(0.05))
@@ -234,7 +234,7 @@ struct ConciergeInsightView: View {
                 .lineSpacing(6)
                 .foregroundColor(.white.opacity(0.6))
         }
-        .padding(32)
+        .padding(22)
         .background(Color.white.opacity(0.03))
         .cornerRadius(24)
     }
