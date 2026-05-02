@@ -13,6 +13,9 @@ class UserProfile {
     var prefersYachting: Bool
     var dietaryRestrictions: String?
     
+    @Relationship(deleteRule: .cascade, inverse: \Reservation.user)
+    var reservations: [Reservation]? = []
+    
     init(name: String, membershipLevel: MembershipLevel = .black) {
         self.id = UUID()
         self.name = name
@@ -37,7 +40,6 @@ class Reservation {
     var status: ReservationStatus
     var specialRequests: String?
     
-    @Relationship(inverse: \UserProfile.reservations)
     var user: UserProfile?
     
     init(venueName: String, date: Date, status: ReservationStatus = .confirmed) {
@@ -52,10 +54,4 @@ enum ReservationStatus: String, Codable {
     case pending = "Pending"
     case confirmed = "Confirmed"
     case completed = "Completed"
-}
-
-// Extension to UserProfile to hold reservations
-extension UserProfile {
-    @Relationship(deleteRule: .cascade)
-    var reservations: [Reservation]?
 }

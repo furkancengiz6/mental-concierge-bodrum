@@ -33,26 +33,4 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 }
 
-class NotificationManager {
-    static let shared = NotificationManager()
-    
-    func requestPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if granted {
-                print("Notification permission granted.")
-            }
-        }
-    }
-    
-    func scheduleGreeting() {
-        let content = UNMutableNotificationContent()
-        content.title = "Bodrum is waiting"
-        content.body = "Your evening plan at Maçakızı is ready."
-        content.sound = .default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request)
-    }
 }
