@@ -22,7 +22,9 @@ jobs:
             -sdk iphonesimulator \
             -arch arm64 \
             -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            ENABLE_DEBUG_DYLIB=NO \
+            SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO
 
       - name: Zip App Bundle
         run: |
@@ -33,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ios-sim-build
-          path: build/Build/Products/Debug-iphonesimulator/MentalConcierge.zip
+          path: build/Build/Products/Release-iphonesimulator/MentalConcierge.zip
