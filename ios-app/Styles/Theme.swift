@@ -31,6 +31,8 @@ extension Color {
     static let zinc900 = Color(hex: "0A0A0A")
     static let appTextMuted = Color(hex: "666666")
     static let appBackground = Color.black
+    static let appGlass = Color.white.opacity(0.05)
+    static let appGlassBorder = Color.white.opacity(0.1)
 }
 
 // Global View Extensions for modern UI
