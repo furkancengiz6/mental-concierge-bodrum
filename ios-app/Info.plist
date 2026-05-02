@@ -2,23 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
     <key>CFBundleDisplayName</key>
     <string>Mental Concierge</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your location is used to provide personalized recommendations for Bodrum and activate regional concierge services.</string>
-    <key>NSUserNotificationsUsageDescription</key>
-    <string>We use notifications to keep you updated on your daily plan and exclusive experiences.</string>
-    <key>UIBackgroundModes</key>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>UIRequiredDeviceCapabilities</key>
     <array>
-        <string>remote-notification</string>
-        <string>location</string>
+        <string>arm64</string>
     </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location is used to provide personalized recommendations for Bodrum.</string>
     <key>UILaunchScreen</key>
-    <dict>
-        <key>UIColorName</key>
-        <string>appBackground</string>
-        <key>UIImageName</key>
-        <string>LaunchLogo</string>
-    </dict>
+    <dict/>
 </dict>
 </plist>
