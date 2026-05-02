@@ -24,15 +24,24 @@ jobs:
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             ENABLE_DEBUG_DYLIB=NO \
-            SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO
+            ENABLE_PREVIEWS=NO
 
-      - name: Zip App Bundle
+      - name: Inspect App Bundle
         run: |
-          cd build/Build/Products/Release-iphonesimulator
-          zip -r MentalConcierge.zip MentalConcierge.app
+          echo "=== App Bundle Contents ==="
+          ls -la build/Build/Products/Release-iphonesimulator/MentalConcierge.app/
+          echo ""
+          echo "=== Binary Architecture ==="
+          file build/Build/Products/Release-iphonesimulator/MentalConcierge.app/MentalConcierge
+          echo ""
+          echo "=== Binary Details ==="
+          lipo -info build/Build/Products/Release-iphonesimulator/MentalConcierge.app/MentalConcierge || true
+          echo ""
+          echo "=== Info.plist ==="
+          plutil -p build/Build/Products/Release-iphonesimulator/MentalConcierge.app/Info.plist
 
-      - name: Upload Artifact
+      - name: Upload App Bundle
         uses: actions/upload-artifact@v4
         with:
-          name: ios-sim-build
-          path: build/Build/Products/Release-iphonesimulator/MentalConcierge.zip
+          name: MentalConcierge.zip
+          path: build/Build/Products/Release-iphonesimulator/MentalConcierge.app
