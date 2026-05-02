@@ -2,10 +2,43 @@ import SwiftUI
 
 @main
 struct MentalConciergeApp: App {
+    @State private var isLoaded = false
+    
     var body: some Scene {
         WindowGroup {
-            MainContainerView()
-                .preferredColorScheme(.dark)
+            Group {
+                if isLoaded {
+                    MainContainerView()
+                        .preferredColorScheme(.dark)
+                } else {
+                    // Safe loading screen to prevent black screen hang
+                    ZStack {
+                        Color.black.ignoresSafeArea()
+                        VStack(spacing: 20) {
+                            ProgressView()
+                                .tint(.appAccent)
+                            Text("PREPARING EXPERIENCE")
+                                .font(.system(size: 10, weight: .bold))
+                                .tracking(4)
+                                .foregroundColor(.white.opacity(0.4))
+                        }
+                    }
+                    .onAppear {
+                        // Small delay to ensure environment is ready
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            isLoaded = true
+                        }
+                    }
+                }
+            }
+            .modelContainer(for: [UserProfile.self, Reservation.self]) { result in
+                switch result {
+                case .success(let container):
+                    print("SwiftData initialized successfully")
+                case .failure(let error):
+                    print("SwiftData failed: \(error.localizedDescription)")
+                }
+            }
         }
     }
 }

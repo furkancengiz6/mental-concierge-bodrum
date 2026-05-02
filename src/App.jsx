@@ -121,7 +121,7 @@ function App() {
       </div>
 
       {demoMode === 'native' ? (
-        <AppetizeEmulator publicKey="b_qr5xmrh7mom5rtsur46bipl4ty" />
+        <AppetizeEmulator publicKey="b_ilpzkb37ouqpt4m2r2suhcfgpe" />
       ) : (
         <>
           {/* Premium Status Bar Simulation */}
