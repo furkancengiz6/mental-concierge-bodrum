@@ -8,10 +8,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Generate Xcode Project
+        run: xcodegen generate
+
       - name: Build for Simulator
         run: |
-          xcodebuild -scheme MentalConcierge \
-            -target MentalConcierge \
+          xcodebuild -project MentalConcierge.xcodeproj \
+            -scheme MentalConcierge \
             -configuration Debug \
             -sdk iphonesimulator \
             -derivedDataPath build

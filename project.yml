@@ -1,0 +1,18 @@
+name: MentalConcierge
+options:
+  bundleIdPrefix: com.furkancengiz
+targets:
+  MentalConcierge:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: 
+      - path: ios-app
+    settings:
+      base:
+        INFOPLIST_FILE: ios-app/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.furkancengiz.mentalconcierge.bodrum
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        TARGETED_DEVICE_FAMILY: 1,2
