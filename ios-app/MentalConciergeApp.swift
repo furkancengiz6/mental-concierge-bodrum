@@ -31,14 +31,7 @@ struct MentalConciergeApp: App {
                     }
                 }
             }
-            .modelContainer(for: [UserProfile.self, Reservation.self]) { result in
-                switch result {
-                case .success(let container):
-                    print("SwiftData initialized successfully")
-                case .failure(let error):
-                    print("SwiftData failed: \(error.localizedDescription)")
-                }
-            }
+            .modelContainer(for: [UserProfile.self, Reservation.self])
         }
     }
 }
