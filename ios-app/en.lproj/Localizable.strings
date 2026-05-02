@@ -1,0 +1,19 @@
+/* English Localization */
+"good_morning" = "Good Morning,\n%@";
+"good_afternoon" = "Good Afternoon,\n%@";
+"good_evening" = "Good Evening,\n%@";
+"good_night" = "Good Night,\n%@";
+
+"master_selection" = "THE MASTER SELECTION";
+"enter_experience" = "Enter Experience";
+"intelligence" = "INTELLIGENCE";
+
+"activate_privilege" = "ACTIVATE PRIVILEGE";
+"active_privilege" = "ACTIVE PRIVILEGE";
+"member_privilege" = "MEMBER PRIVILEGE";
+
+/* Weather Advice */
+"advice_yacht_title" = "The Yacht Morning";
+"advice_yacht_subtitle" = "IDEAL CONDITIONS";
+"advice_beach_title" = "Beach Sanctuary";
+"advice_beach_subtitle" = "REFRESHING BREEZE";

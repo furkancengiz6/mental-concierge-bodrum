@@ -1,0 +1,28 @@
+name: Build iOS for Appetize
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build for Simulator
+        run: |
+          xcodebuild -scheme MentalConcierge \
+            -target MentalConcierge \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -derivedDataPath build
+
+      - name: Zip App Bundle
+        run: |
+          cd build/Build/Products/Debug-iphonesimulator
+          zip -r MentalConcierge.zip MentalConcierge.app
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-sim-build
+          path: build/Build/Products/Debug-iphonesimulator/MentalConcierge.zip

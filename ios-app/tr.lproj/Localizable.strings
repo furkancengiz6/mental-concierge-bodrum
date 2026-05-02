@@ -1,0 +1,19 @@
+/* Turkish Localization */
+"good_morning" = "Günaydın,\n%@";
+"good_afternoon" = "Tünaydın,\n%@";
+"good_evening" = "İyi Akşamlar,\n%@";
+"good_night" = "İyi Geceler,\n%@";
+
+"master_selection" = "GÜNÜN SEÇİMİ";
+"enter_experience" = "Deneyimi Başlat";
+"intelligence" = "ÖNGÖRÜ";
+
+"activate_privilege" = "AYRICALIĞI AKTİVE ET";
+"active_privilege" = "AYRICALIK AKTİF";
+"member_privilege" = "ÜYE AYRICALIĞI";
+
+/* Weather Advice */
+"advice_yacht_title" = "Kusursuz Bir Yat Sabahı";
+"advice_yacht_subtitle" = "İDEAL KOŞULLAR";
+"advice_beach_title" = "Beach Club Zamanı";
+"advice_beach_subtitle" = "FERAHLATICI RÜZGAR";
